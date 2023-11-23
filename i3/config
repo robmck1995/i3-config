@@ -167,10 +167,10 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+        bindsym h resize shrink width 10 px or 10 ppt
+        bindsym j resize grow height 10 px or 10 ppt
+        bindsym k resize shrink height 10 px or 10 ppt
+        bindsym l resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys
         bindsym Left resize shrink width 10 px or 10 ppt
@@ -183,6 +183,7 @@ mode "resize" {
         bindsym Escape mode "default"
         bindsym $mod+r mode "default"
 }
+bindsym $mod+r mode "resize"
 
 ## Screenshots
 bindsym Print exec --no-startup-id maim "/home/$USER/Pictures/$(date)"
@@ -193,7 +194,6 @@ bindsym Shift+Print exec --no-startup-id maim --select "/home/$USER/Pictures/$(d
 bindsym Ctrl+Print exec --no-startup-id maim | xclip -selection clipboard -t image/png
 bindsym Ctrl+$mod+Print exec --no-startup-id maim --window $(xdotool getactivewindow) | xclip -selection clipboard -t image/png
 bindsym Ctrl+Shift+Print exec --no-startup-id maim --select | xclip -selection clipboard -t image/png
-bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
@@ -201,8 +201,13 @@ bar {
         status_command i3status
 }
 
+# Move the current workspace to the next screen
 bindsym $mod+Ctrl+greater move workspace to output next
+
+# Lock i3
 bindsym Control+Mod1+l exec "i3lock -c 000000"
+
+# A bunch of bindings to set up multiple screens, maybe theres a better way
 bindsym Ctrl+Mod1+z exec "xrandr --output DP-3-1 --off;xrandr --output DP-3-1 --auto;xrandr --output eDP-1 --pos 6144x1098;xrandr --output DP-3-1 --scale 1.6x1.6"
 bindsym Ctrl+Mod1+a exec "xrandr --output DP-3-1 --off"
 bindsym Ctrl+Mod1+x exec "xrandr --output DP-3 --off;sleep 0.5;xrandr --output DP-3 --auto;sleep 0.5;xrandr --output DP-3 --left-of eDP-1"
@@ -222,6 +227,7 @@ set $KP_8 80
 set $KP_9 81
 set $KP_0 90
 
+# I believe mod2 is NumLock
 bindcode $mod+mod2+$KP_1 workspace 1
 bindcode $mod+mod2+$KP_2 workspace 2
 bindcode $mod+mod2+$KP_3 workspace 3
