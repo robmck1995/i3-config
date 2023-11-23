@@ -9,11 +9,13 @@
 general {
         colors = true
         interval = 5
+        output_format = "i3bar"
 }
 
 order += "ipv6"
 order += "wireless _first_"
 order += "ethernet _first_"
+order += "volume master"
 order += "battery all"
 order += "disk /"
 order += "load"
@@ -50,4 +52,10 @@ memory {
 
 tztime local {
         format = "%Y-%m-%d %H:%M:%S"
+}
+
+volume master {
+        format = "VOL: %volume"
+        format_muted = "VOL: muted (%volume)"
+        device = "pulse:1"
 }
