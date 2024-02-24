@@ -215,10 +215,11 @@ bindsym Control+Mod1+l exec "i3lock -c 000000"
 # A bunch of bindings to set up multiple screens, maybe theres a better way
 bindsym Ctrl+Mod1+z exec "xrandr --output DP-3-1 --off;xrandr --output DP-3-1 --auto;xrandr --output eDP-1 --pos 6144x1098;xrandr --output DP-3-1 --scale 1.6x1.6"
 bindsym Ctrl+Mod1+a exec "xrandr --output DP-3-1 --off"
-bindsym Ctrl+Mod1+x exec "xrandr --output DP-3 --off;sleep 0.5;xrandr --output DP-3 --auto;sleep 0.5;xrandr --output DP-3 --left-of eDP-1"
+bindsym Ctrl+Mod1+x exec "xrandr --output DP-3 --off;sleep 0.5;xrandr --output DP-3 --auto;sleep 0.5;xrandr --output DP-3 --right-of eDP-1 --scale 1.6x1.6"
 bindsym Ctrl+Mod1+s exec "xrandr --output DP-3 --off"
 
 bindsym --release Print exec scrot -s
+
 
 # Numpad bindings
 set $KP_1 87
